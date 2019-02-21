@@ -8,9 +8,11 @@ const visitor = {
         // Make sure there are only allowed node types inside
         modulePath.get('body').traverse({
           enter(path) {
-            throw path.buildCodeFrameError(
-              'Namespaces must only contain type and interface declarations',
-            );
+            if (!path.isModuleDeclaration()) {
+              throw path.buildCodeFrameError(
+                'Namespaces must only contain type and interface declarations',
+              );
+            }
           },
           blacklist: [
             'TSModuleDeclaration', // nested ones will get their own visitor passes

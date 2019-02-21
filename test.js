@@ -19,6 +19,21 @@ test('strips away a namespace containing types and interfaces', () => {
   expect(code).toEqual(`class N {}`);
 });
 
+test('allows export declarations', () => {
+  const { code } = transform(
+    `
+    namespace N {
+      export type A = string;
+    }
+
+    class N {}
+    `,
+    { plugins: [plugin, '@babel/plugin-syntax-typescript'] },
+  );
+
+  expect(code).toEqual(`class N {}`);
+});
+
 test('handles nested namespaces', () => {
   const { code } = transform(
     `

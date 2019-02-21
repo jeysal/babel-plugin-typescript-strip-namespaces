@@ -7,3 +7,9 @@
 
 See `test.js` for transform examples.
 This plugin should be used _in addition to_ `@babel/plugin-transform-typescript`.
+
+## Changelog
+
+### 1.0.1
+
+- Allow export declarations

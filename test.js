@@ -19,7 +19,7 @@ test('strips away a namespace containing types and interfaces', () => {
   expect(code).toEqual(`class N {}`);
 });
 
-test.skip('handles nested namespaces', () => {
+test('handles nested namespaces', () => {
   const { code } = transform(
     `
     namespace N {
@@ -53,7 +53,7 @@ test('fails if a namespace contains anything else', () => {
   ).toThrowErrorMatchingSnapshot();
 });
 
-test.skip('fails if a nested namespace contains anything else', () => {
+test('fails if a nested namespace contains anything else', () => {
   expect(() =>
     transform(
       `

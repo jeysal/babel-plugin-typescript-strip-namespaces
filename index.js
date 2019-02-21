@@ -8,25 +8,31 @@ const visitor = {
         // Make sure there are only allowed node types inside
         modulePath.get('body').traverse({
           enter(path) {
-            // Nested namespaces would be easy to support if we could remove in exit,
-            // but because we have to do in in enter (see below), the commented out code will not traverse anything
-            // if (path.isTSModuleDeclaration()) {
-            //   // Must check nested ones now, or the whole modulePath will already be removed
-            //   path.traverse(visitor);
-            //   path.skip();
-            // } else {
             throw path.buildCodeFrameError(
               'Namespaces must only contain type and interface declarations',
             );
-            // }
           },
-          blacklist: ['TSTypeAliasDeclaration', 'TSInterfaceDeclaration'],
+          blacklist: [
+            'TSModuleDeclaration', // nested ones will get their own visitor passes
+            'TSTypeAliasDeclaration',
+            'TSInterfaceDeclaration',
+          ],
         });
-        // Removing in exit would be too late because of plugin-transform-typescript
+      }
+    },
+    exit(modulePath) {
+      if (!handledByTransformTypescript(modulePath)) {
         modulePath.remove();
       }
     },
   },
 };
 
-module.exports = ({ types: t }) => ({ visitor });
+module.exports = ({ types: t }) => ({
+  visitor: {
+    // Gotta run before plugin-transform-typescript
+    Program(path) {
+      path.traverse(visitor);
+    },
+  },
+});

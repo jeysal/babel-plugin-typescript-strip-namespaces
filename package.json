@@ -7,7 +7,7 @@
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@babel/core": "^7.3.0"
+    "@babel/core": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.0",

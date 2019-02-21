@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails if a namespace contains anything else 1`] = `
+"undefined: Namespaces must only contain type and interface declarations
+  1 | 
+  2 |       namespace N {
+> 3 |          const x = 42;
+    |          ^
+  4 |       }
+  5 |       "
+`;
+
+exports[`fails if a nested namespace contains anything else 1`] = `
+"undefined: Namespaces must only contain type and interface declarations
+  3 |         type A = string;
+  4 |         namespace Inner {
+> 5 |           const x = 42;
+    |           ^
+  6 |         }
+  7 |       }
+  8 |       "
+`;

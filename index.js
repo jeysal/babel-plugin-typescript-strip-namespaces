@@ -10,7 +10,7 @@ const visitor = {
           enter(path) {
             if (!path.isModuleDeclaration()) {
               throw path.buildCodeFrameError(
-                'Namespaces must only contain type and interface declarations',
+                'Namespaces must only contain type and interface declarations'
               );
             }
           },

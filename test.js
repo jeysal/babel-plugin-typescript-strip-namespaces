@@ -13,7 +13,7 @@ test('strips away a namespace containing types and interfaces', () => {
 
     class N {}
     `,
-    { plugins: [plugin, '@babel/plugin-syntax-typescript'] },
+    { plugins: [plugin, '@babel/plugin-syntax-typescript'] }
   );
 
   expect(code).toEqual(`class N {}`);
@@ -28,7 +28,7 @@ test('allows export declarations', () => {
 
     class N {}
     `,
-    { plugins: [plugin, '@babel/plugin-syntax-typescript'] },
+    { plugins: [plugin, '@babel/plugin-syntax-typescript'] }
   );
 
   expect(code).toEqual(`class N {}`);
@@ -46,7 +46,7 @@ test('handles nested namespaces', () => {
 
     class N {}
     `,
-    { plugins: [plugin, '@babel/plugin-syntax-typescript'] },
+    { plugins: [plugin, '@babel/plugin-syntax-typescript'] }
   );
 
   expect(code).toEqual(`class N {}`);
@@ -63,8 +63,8 @@ test('fails if a namespace contains anything else', () => {
       {
         plugins: [plugin, '@babel/plugin-syntax-typescript'],
         highlightCode: false,
-      },
-    ),
+      }
+    )
   ).toThrowErrorMatchingSnapshot();
 });
 
@@ -82,8 +82,8 @@ test('fails if a nested namespace contains anything else', () => {
       {
         plugins: [plugin, '@babel/plugin-syntax-typescript'],
         highlightCode: false,
-      },
-    ),
+      }
+    )
   ).toThrowErrorMatchingSnapshot();
 });
 
@@ -101,7 +101,7 @@ test('works with plugin-transform-typescript', () => {
     `,
     {
       plugins: ['@babel/plugin-transform-typescript', plugin], // even in the wrong order!
-    },
+    }
   );
   expect(code).toEqual('class N {}');
 });

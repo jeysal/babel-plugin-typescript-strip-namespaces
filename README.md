@@ -5,6 +5,8 @@
 [![npm package](https://img.shields.io/npm/v/babel-plugin-typescript-strip-namespaces.svg?style=flat-square)](https://www.npmjs.com/package/babel-plugin-typescript-strip-namespaces)
 [![license](https://img.shields.io/github/license/jeysal/babel-plugin-typescript-strip-namespaces.svg?style=flat-square)](https://github.com/jeysal/babel-plugin-typescript-strip-namespaces/blob/master/LICENSE)
 
+**Note: This package is now deprecated. `@babel/plugin-transform-typescript` itself [now supports namespaces](https://babeljs.io/docs/en/babel-plugin-transform-typescript#impartial-namespace-support).**
+
 See `test.js` for transform examples.
 This plugin should be used _in addition to_ `@babel/plugin-transform-typescript`.
 
